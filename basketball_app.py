@@ -69,6 +69,9 @@ def generate_heatmap(df: pd.DataFrame):
     st.pyplot(fig)
 
 
+# PAGE LAYOUT - Page extends to full width
+st.set_page_config(layout="wide")
+
 # --- SIDEBAR --- #
 # Sidebar - Year selection
 st.sidebar.header('User Input Features')
@@ -113,10 +116,24 @@ df_selected_team_and_position = player_stats_df[(player_stats_df.Tm.isin(selecte
 # --- MAIN --- #
 # Main - title and description
 st.title('NBA Player Stats Explorer')
-st.markdown("""
+
+about_expander = st.beta_expander("About")
+about_expander.markdown("""
 This app performs simple web-scraping of NBA player stats data!
-* **Python libraries:** base64, pandas, streamlit
-* **Data source:** [Basketball-reference.com](https://www.basketball-reference.com/).
+
+#### How to use? 
+Use the side panel to choose the following:
+* Year
+* Stats from: Regular season or Play-offs
+* Players from Teams 
+* Players from Positions
+""")
+
+about_expander.markdown("""
+#### Additional info:
+* Data source: [Basketball-reference.com](https://www.basketball-reference.com/).
+* Credit: Base app idea and content adapted from [Streamlit tutorial](https://youtu.be/xiBXspqs0dk) created by 
+  [Data Professor](https://www.youtube.com/channel/UCV8e2g4IWQqK71bbzGDEI4Q) 
 """)
 
 # Main - Display Player Stats
