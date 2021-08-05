@@ -144,7 +144,7 @@ percentage_cols = ['FG%', '3P%', '2P%', 'eFG%', 'FT%']
 num_cols = df_selected_team_and_position.columns.drop(['Player', 'Pos', 'Tm', 'Age', 'G', 'GS', *percentage_cols])
 num_cols_to_adjust_dict = {col: "{:.1f}" for col in num_cols}
 perc_cols_to_adjust_dict = {col: "{:.3f}" for col in percentage_cols}
-st.dataframe(df_selected_team_and_position.style.format(num_cols_to_adjust_dict | perc_cols_to_adjust_dict))
+st.dataframe(df_selected_team_and_position.style.format({**num_cols_to_adjust_dict, **perc_cols_to_adjust_dict}))
 
 # Main - Download CSV file
 st.markdown(download_csv_file_link(df_selected_team_and_position), unsafe_allow_html=True)
