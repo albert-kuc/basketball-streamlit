@@ -119,7 +119,6 @@ st.title('NBA Player Stats Explorer')
 
 about_expander = st.beta_expander("About")
 about_expander.markdown("""
-This app performs simple web-scraping of NBA player stats data!
 
 #### How to use? 
 Use the side panel to choose the following:
@@ -127,11 +126,10 @@ Use the side panel to choose the following:
 * Stats from: Regular season or Play-offs
 * Players from Teams 
 * Players from Positions
-""")
 
-about_expander.markdown("""
+######
 #### Additional info:
-* Data source: [Basketball-reference.com](https://www.basketball-reference.com/).
+* Data source: This app performs simple web-scraping from [Basketball-reference.com](https://www.basketball-reference.com/).
 * Credit: Base app idea and content adapted from [Streamlit tutorial](https://youtu.be/xiBXspqs0dk) created by 
   [Data Professor](https://www.youtube.com/channel/UCV8e2g4IWQqK71bbzGDEI4Q) 
 """)
