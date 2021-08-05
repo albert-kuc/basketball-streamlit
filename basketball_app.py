@@ -138,7 +138,13 @@ Use the side panel to choose the following:
 st.header('Display Player Stats of Selected Team(s)')
 st.write(f'Data Dimension: {str(df_selected_team_and_position.shape[0])} rows and '
          f'{str(df_selected_team_and_position.shape[1])} columns.')
-st.dataframe(df_selected_team_and_position)
+
+# Streamlit requires to individually set decimal places per column with float data
+percentage_cols = ['FG%', '3P%', '2P%', 'eFG%', 'FT%']
+num_cols = df_selected_team_and_position.columns.drop(['Player', 'Pos', 'Tm', 'Age', 'G', 'GS', *percentage_cols])
+num_cols_to_adjust_dict = {col: "{:.1f}" for col in num_cols}
+perc_cols_to_adjust_dict = {col: "{:.3f}" for col in percentage_cols}
+st.dataframe(df_selected_team_and_position.style.format(num_cols_to_adjust_dict | perc_cols_to_adjust_dict))
 
 # Main - Download CSV file
 st.markdown(download_csv_file_link(df_selected_team_and_position), unsafe_allow_html=True)
